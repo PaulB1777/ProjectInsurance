@@ -1,7 +1,9 @@
 # Auto Insurance Cost Analysis
 ## Dataset:
 * **Source:**[“Insurance: Vehicle insurance data of customers”]  (https://www.kaggle.com/datasets/ranja7/vehicle-insurance-customer-data)
-* **Limitation:** One unfortunate aspect of this dataset is that it does not include an age variable. 
+* **Limitations:** 
+* One unfortunate aspect of this dataset is that it does not include an age variable. 
+* This dataset only contains claim severity, not claim frequency. Thus, I cannot calculate expected loss or build a pricing model.
 ## Objective:
 I aim to study which variables impact the size of an auto insurance claim size.
 ## Research Questions
@@ -11,7 +13,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 ## Methodology and Data Cleaning:
 
 
-* **Dropped Variables:** ‘Customer’, ‘Coverage’, ‘Customer Lifetime Value’, ‘Effective to Date’, ‘Monthly Premium Auto’, ‘Months Since Last Claim’, ‘Months Since Policy Inception’, ‘Number of Open Complaints’, ‘Number of Policies’, ‘Renew Offer Type’, ‘Sales Channel’, ‘Policy Type’, ‘Policy’, ‘Response’
+* ** Dropped Variables: ** ‘Customer’, ‘Coverage’, ‘Customer Lifetime Value’, ‘Effective to Date’, ‘Monthly Premium Auto’, ‘Months Since Last Claim’, ‘Months Since Policy Inception’, ‘Number of Open Complaints’, ‘Number of Policies’, ‘Renew Offer Type’, ‘Sales Channel’, ‘Policy Type’, ‘Policy’, ‘Response’
 * **Justification:** These variables do not provide information relevant to this project. Operational and administrative variables are excluded from the scope of this project.
 ## Overall Claim Distribution
 ![Claim Distribution Histogram](./Visuals/claim_distribution_box.png)
@@ -58,6 +60,21 @@ I aim to study which variables impact the size of an auto insurance claim size.
 * All three marital statuses display right-skew. 
 ---
 ## Vehicle Characteristics Analysis
+### Vehicle Class
+![Marriage Boxplot](./Visuals/vehicle_class_claim_boxplot.png)
+
+* Tiers of Risk:
+	* High Risk: Luxury Cars and Luxury SUVs have medians and means **above $1000**.
+	* Moderate Risk: SUV’s and Sport Cars have a mean claim size of **$500 - $600**.
+	* Low Risk: Two-Door Cars and Four-Door Cars have a mean claim size of **~$350**.
+* All of the vehicle classes display a positive skew. 
+* Luxury vehicles display the widest IQRs. 
+### Vehicle Size 
+![Marriage Boxplot](./Visuals/vehicle_size_claim_boxplot.png)
+
+* Large and Medsize vehicles display a similar distribution. 
+* Small vehicles have a larger mean and median.
+* They are all right-skewed.
 ---
 ## Location Characteristics Analysis
 
