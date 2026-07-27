@@ -2,8 +2,8 @@
 ## Dataset:
 * **Source:**[“Insurance: Vehicle insurance data of customers”]  (https://www.kaggle.com/datasets/ranja7/vehicle-insurance-customer-data)
 * **Limitations:** 
-* One unfortunate aspect of this dataset is that it does not include an age variable. 
-* This dataset only contains claim severity, not claim frequency. Thus, I cannot calculate expected loss or build a pricing model.
+	* One unfortunate aspect of this dataset is that it does not include an age variable. 
+	* This dataset only contains claim severity, not claim frequency. Thus, I cannot calculate expected loss or build a pricing model.
 ## Objective:
 I aim to study which variables impact the size of an auto insurance claim size.
 ## Research Questions
