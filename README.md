@@ -61,7 +61,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 ---
 ## Vehicle Characteristics Analysis
 ### Vehicle Class
-![Marriage Boxplot](./Visuals/vehicle_class_claim_boxplot.png)
+![Vehicle Class Boxplot](./Visuals/vehicle_class_claim_boxplot.png)
 
 * Tiers of Risk:
 	* High Risk: Luxury Cars and Luxury SUVs have medians and means **above $1000**.
@@ -70,7 +70,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 * All of the vehicle classes display a positive skew. 
 * Luxury vehicles display the widest IQRs. 
 ### Vehicle Size 
-![Marriage Boxplot](./Visuals/vehicle_size_claim_boxplot.png)
+![Vehicle Size Boxplot](./Visuals/vehicle_size_claim_boxplot.png)
 
 * Large and Medsize vehicles display a similar distribution. 
 * Small vehicles have a larger mean and median.
