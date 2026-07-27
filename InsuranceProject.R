@@ -130,3 +130,41 @@ ggplot(insurance,
   xlab ("Education Level") +
   ylab ("Claim Amount") +
   labs(title = "Education Level vs. Claim Amount")
+
+# Vehicle
+## Vehicle class
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Class`, mean)
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Class`, median)
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Class`, sd)
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Class`, length)
+
+ggplot(insurance, 
+       aes(
+         x = reorder(`Vehicle Class`, `Total Claim Amount`, FUN = mean), 
+         y = `Total Claim Amount`)) +
+  coord_flip() +
+  stat_boxplot(geom="errorbar") +
+  geom_boxplot(fill="lightgreen") +
+  stat_summary(fun = mean, col = "black", geom = "point", size = 3) +
+  xlab ("Vehicle Class") +
+  ylab ("Claim Amount") +
+  labs(title = "Vehicle Class vs. Claim Amount")
+
+## Vehicle Size
+
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Size`, mean)
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Size`, median)
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Size`, sd)
+tapply(insurance$'Total Claim Amount', insurance$`Vehicle Size`, length)
+
+ggplot(insurance, 
+       aes(
+         x = reorder(`Vehicle Size`, `Total Claim Amount`, FUN = mean), 
+         y = `Total Claim Amount`)) +
+  coord_flip() +
+  stat_boxplot(geom="errorbar") +
+  geom_boxplot(fill="lightgreen") +
+  stat_summary(fun = mean, col = "black", geom = "point", size = 3) +
+  xlab ("Vehicle Size") +
+  ylab ("Claim Amount") +
+  labs(title = "Vehicle Size vs. Claim Amount")
