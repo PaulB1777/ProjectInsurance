@@ -2,8 +2,8 @@
 ## Dataset:
 * **Source:**[“Insurance: Vehicle insurance data of customers”]  (https://www.kaggle.com/datasets/ranja7/vehicle-insurance-customer-data)
 * **Limitations:** 
-	* One unfortunate aspect of this dataset is that it does not include an age variable. 
-	* This dataset only contains claim severity, not claim frequency. Thus, I cannot calculate expected loss or build a pricing model.
+* One unfortunate aspect of this dataset is that it does not include an age variable. 
+* This dataset only contains claim severity, not claim frequency. Thus, I cannot calculate expected loss or build a pricing model.
 ## Objective:
 I aim to study which variables impact the size of an auto insurance claim size.
 ## Research Questions
@@ -77,4 +77,17 @@ I aim to study which variables impact the size of an auto insurance claim size.
 * They are all right-skewed.
 ---
 ## Location Characteristics Analysis
+### State
+![State Bar graph](./Visuals/state_claim_bargraph.png)
 
+* **Note:** In this dataset, only claims from Arizona, California, Nevada, Oregon, and Washington are included.
+* All of these states have a similar mean claim amount (**~$430**).
+* There does not seem to be much difference between states.
+### Location Code
+![Location Code boxplot](./Visuals/location_code_claim_boxplot.png)
+
+* There are notable differences between different location code claim amounts.
+	* **Rural:** Mean: $109.51; Median: $100.05; St Dev: $76.85
+	* **Suburban:** Mean: $562.16; Median: $494.40; St Dev: $275.17
+	* **Urban:** Mean: $329.57; Median: $300.06; St Dev: $124.18
+* They are all strongly right-skewed.
