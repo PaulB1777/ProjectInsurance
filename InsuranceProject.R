@@ -168,3 +168,36 @@ ggplot(insurance,
   xlab ("Vehicle Size") +
   ylab ("Claim Amount") +
   labs(title = "Vehicle Size vs. Claim Amount")
+
+# Location characteristics
+## State
+Statemean <- data.frame(
+  State = levels(factor(insurance$State)),
+  Mean = tapply(insurance$'Total Claim Amount', insurance$State, mean)
+)
+tapply(insurance$'Total Claim Amount', insurance$State, median)
+tapply(insurance$'Total Claim Amount', insurance$State, sd)
+tapply(insurance$'Total Claim Amount', insurance$State, length)
+
+ggplot(Statemean, aes(x = reorder(State, Mean), y = Mean)) +
+  geom_bar(stat = "identity", col = "black", fill = "lightgreen") +
+  coord_flip() +
+  labs(title = "Claim Amount vs. State", x = "State", y = "Claim Amount")
+
+## Location code
+tapply(insurance$'Total Claim Amount', insurance$`Location Code`, mean)
+tapply(insurance$'Total Claim Amount', insurance$`Location Code`, median)
+tapply(insurance$'Total Claim Amount', insurance$`Location Code`, sd)
+tapply(insurance$'Total Claim Amount', insurance$`Location Code`, length)
+
+ggplot(insurance, 
+       aes(
+         x = reorder(`Location Code`, `Total Claim Amount`, FUN = mean), 
+         y = `Total Claim Amount`)) +
+  coord_flip() +
+  stat_boxplot(geom="errorbar") +
+  geom_boxplot(fill="lightgreen") +
+  stat_summary(fun = mean, col = "black", geom = "point", size = 3) +
+  xlab ("Vehicle Size") +
+  ylab ("Claim Amount") +
+  labs(title = "Location Code vs. Claim Amount")
