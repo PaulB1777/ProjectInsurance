@@ -71,6 +71,11 @@ ggplot(insurance,
   ylab ("Claim Amount") +
   labs(title = "Gender vs. Claim Amount")
 
+#ANOVA
+modelgender <- aov(`Total Claim Amount` ~ Gender, data = insurance)
+
+summary(modelgender)
+
 # Education Analysis
 tapply(insurance$'Total Claim Amount', insurance$Education, mean)
 tapply(insurance$'Total Claim Amount', insurance$Education, median)
@@ -88,6 +93,10 @@ ggplot(insurance,
   xlab ("Education Level") +
   ylab ("Claim Amount") +
   labs(title = "Education Level vs. Claim Amount")
+
+modeleducation <- aov(`Total Claim Amount` ~ Education, data = insurance)
+
+summary(modeleducation)
 
 # Employment Analysis
 tapply(insurance$'Total Claim Amount', insurance$EmploymentStatus, mean)
@@ -107,11 +116,19 @@ ggplot(insurance,
   ylab ("Claim Amount") +
   labs(title = "Education Level vs. Claim Amount")
 
+modeljob <- aov(`Total Claim Amount` ~ EmploymentStatus, data = insurance)
+
+summary(modeljob)
+
 # Income
 ggplot(insurance, aes(x = Income, y = `Total Claim Amount`)) +
   geom_point() +
   geom_smooth(method = lm, se = FALSE) +
   ggtitle("Claim Size vs. Income") 
+
+modelincome <- lm(`Total Claim Amount` ~ Income, data = insurance)
+
+summary(modelincome)
 
 # Marital Status
 tapply(insurance$'Total Claim Amount', insurance$`Marital Status`, mean)
@@ -130,6 +147,10 @@ ggplot(insurance,
   xlab ("Education Level") +
   ylab ("Claim Amount") +
   labs(title = "Education Level vs. Claim Amount")
+
+modelmarry <- aov(`Total Claim Amount` ~ `Marital Status`, data = insurance)
+
+summary(modelmarry)
 
 # Vehicle
 ## Vehicle class
@@ -150,6 +171,10 @@ ggplot(insurance,
   ylab ("Claim Amount") +
   labs(title = "Vehicle Class vs. Claim Amount")
 
+modelclass <- aov(`Total Claim Amount` ~ `Vehicle Class`, data = insurance)
+
+summary(modelclass)
+
 ## Vehicle Size
 
 tapply(insurance$'Total Claim Amount', insurance$`Vehicle Size`, mean)
@@ -169,6 +194,10 @@ ggplot(insurance,
   ylab ("Claim Amount") +
   labs(title = "Vehicle Size vs. Claim Amount")
 
+modelsize <- aov(`Total Claim Amount` ~ `Vehicle Size`, data = insurance)
+
+summary(modelsize)
+
 # Location characteristics
 ## State
 Statemean <- data.frame(
@@ -183,6 +212,10 @@ ggplot(Statemean, aes(x = reorder(State, Mean), y = Mean)) +
   geom_bar(stat = "identity", col = "black", fill = "lightgreen") +
   coord_flip() +
   labs(title = "Claim Amount vs. State", x = "State", y = "Claim Amount")
+
+modelstate <- aov(`Total Claim Amount` ~ `State`, data = insurance)
+
+summary(modelstate)
 
 ## Location code
 tapply(insurance$'Total Claim Amount', insurance$`Location Code`, mean)
@@ -201,3 +234,7 @@ ggplot(insurance,
   xlab ("Vehicle Size") +
   ylab ("Claim Amount") +
   labs(title = "Location Code vs. Claim Amount")
+
+modellocation <- aov(`Total Claim Amount` ~ `Location Code`, data = insurance)
+
+summary(modellocation)
