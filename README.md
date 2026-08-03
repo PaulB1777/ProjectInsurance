@@ -11,7 +11,10 @@ I aim to study which variables impact the size of an auto insurance claim size.
 * **Vehicle:** Can the vehicle’s profile be used to predict charge size?
 * **Location:** Does geographic location relate to the charge size?
 ## Methodology and Data Cleaning:
-
+* For each variable, an initial, basic analysis will be conducted to observe the distribution.
+* For each relevant variable, a one-way ANOVA will be used to determine whether the mean value of the “Total Claim Amount” variable differed across categorical groups. The null hypothesis assumes that all group means are equal, where the alternative hypothesis is that at least one group mean differs. 
+	* We will reject the null hypothesis if the p value is less than 0.05.
+	* We will fail to reject the null hypothesis if the p value is greater than or equal to 0.05.
 
 * ** Dropped Variables: ** ‘Customer’, ‘Coverage’, ‘Customer Lifetime Value’, ‘Effective to Date’, ‘Monthly Premium Auto’, ‘Months Since Last Claim’, ‘Months Since Policy Inception’, ‘Number of Open Complaints’, ‘Number of Policies’, ‘Renew Offer Type’, ‘Sales Channel’, ‘Policy Type’, ‘Policy’, ‘Response’
 * **Justification:** These variables do not provide information relevant to this project. Operational and administrative variables are excluded from the scope of this project.
@@ -24,6 +27,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 ---
 ## Individual Characteristics Analysis
 ### Gender 
+#### Basic Analysis
 ![Gender Boxplot](./Visuals/gender_claim_boxplot.png)
 
 * Males have a higher mean and median claim size than females. 
@@ -33,34 +37,58 @@ I aim to study which variables impact the size of an auto insurance claim size.
 	* Males have a standard deviation of $303.37.
 	* Females have a standard deviation of $275.94.
 * Both Males and Females display a strong right-skew. 
+
+#### ANOVA
+* The ANOVA test was statistically significant (p = 9.67e-13), providing significant evidence that at least one group mean differs. For this variable, that means that the means of males and females are different in terms of their average claim amount.
+
 ### Education
+#### Basic Analysis
 ![Education Boxplot](./Visuals/education_claim_boxplot.png)
 
 * The average claim amount is lower for higher levels of education.
 * Notably, doctorates have the fewest outliers.
 	* This may be because doctors have the fewest number of individuals (342).
 * All levels of education display some degree of right-skew.
+
+#### ANOVA
+* The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one level of education is different in average claim amount.
+
 ### Employment Status
+#### Basic Analysis
 ![Employment boxplot](./Visuals/employment_claim_boxplot.png)
 
 * Unemployed individuals have the highest average claim size by far ($599.58). It is more than $100 higher than the second highest average claim size, Retired ($489.90).
 * Retired claims have the lowest standard deviation despite having the lowest number of individuals. 
 * All of the employment statuses display a positive skew.
+
+#### ANOVA
+* The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one employment status is different in average claim amount.
+
 ### Income
+#### Basic Analysis
 ![income scatterplot](./Visuals/income_claim_scatterplot.png)
 
 * There is a slight negative relationship between income and claim size.
 	* This is not a reliable predictor, as suggested by the wide range of datapoints. 
 * There is a large number of datapoints with an income roughly equal to 0. These are likely representing the unemployed and retired individuals. 
+
+#### $R^2$ Analysis
+* The $R^2$ value is 0.1261. This indicates that ~12.61% of the variance in the “Total Claim Amount” variable is explained by the income variable. 
+
 ### Marital Status
+#### Basic Analysis
 ![Marriage Boxplot](./Visuals/marriage_claim_boxplot.png)
 
 * The highest average marital status claim size is Single individuals ($557.41). This is notably higher than Divorced ($403.71) and Married ($384.52).
 * Single individuals have the highest median and standard deviation, as well. 
 * All three marital statuses display right-skew. 
+
+#### ANOVA
+* The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one marital status is different in average claim amount.
 ---
 ## Vehicle Characteristics Analysis
 ### Vehicle Class
+#### Basic Analysis
 ![Vehicle Class Boxplot](./Visuals/vehicle_class_claim_boxplot.png)
 
 * Tiers of Risk:
@@ -69,20 +97,33 @@ I aim to study which variables impact the size of an auto insurance claim size.
 	* Low Risk: Two-Door Cars and Four-Door Cars have a mean claim size of **~$350**.
 * All of the vehicle classes display a positive skew. 
 * Luxury vehicles display the widest IQRs. 
+
+#### ANOVA
+* The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one vehicle class is different in average claim amount.
+
 ### Vehicle Size 
+#### Basic Analysis
 ![Vehicle Size Boxplot](./Visuals/vehicle_size_claim_boxplot.png)
 
 * Large and Medsize vehicles display a similar distribution. 
 * Small vehicles have a larger mean and median.
 * They are all right-skewed.
+
+#### ANOVA
+* The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one vehicle size is different in average claim amount.
 ---
 ## Location Characteristics Analysis
 ### State
+#### Basic Analysis
 ![State Bar graph](./Visuals/state_claim_bargraph.png)
 
 * **Note:** In this dataset, only claims from Arizona, California, Nevada, Oregon, and Washington are included.
 * All of these states have a similar mean claim amount (**~$430**).
 * There does not seem to be much difference between states.
+
+#### ANOVA
+* The ANOVA test was not statistically significant (p = 0.669), providing insufficient evidence that at least one group mean differs. For this variable, that means that there is no significant difference in average claim amount between states.
+
 ### Location Code
 ![Location Code boxplot](./Visuals/location_code_claim_boxplot.png)
 
@@ -91,3 +132,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 	* **Suburban:** Mean: $562.16; Median: $494.40; St Dev: $275.17
 	* **Urban:** Mean: $329.57; Median: $300.06; St Dev: $124.18
 * They are all strongly right-skewed.
+
+#### ANOVA
+* The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one location code is different in average claim amount.
+
