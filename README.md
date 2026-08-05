@@ -15,6 +15,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 * For each relevant variable, a one-way ANOVA will be used to determine whether the mean value of the “Total Claim Amount” variable differed across categorical groups. The null hypothesis assumes that all group means are equal, where the alternative hypothesis is that at least one group mean differs. 
 	* We will reject the null hypothesis if the p value is less than 0.05.
 	* We will fail to reject the null hypothesis if the p value is greater than or equal to 0.05.
+* A TukeyHSD test will be done to determine which groups are significantly different from each other on the relevant variables.
 
 * ** Dropped Variables: ** ‘Customer’, ‘Coverage’, ‘Customer Lifetime Value’, ‘Effective to Date’, ‘Monthly Premium Auto’, ‘Months Since Last Claim’, ‘Months Since Policy Inception’, ‘Number of Open Complaints’, ‘Number of Policies’, ‘Renew Offer Type’, ‘Sales Channel’, ‘Policy Type’, ‘Policy’, ‘Response’
 * **Justification:** These variables do not provide information relevant to this project. Operational and administrative variables are excluded from the scope of this project.
@@ -52,6 +53,8 @@ I aim to study which variables impact the size of an auto insurance claim size.
 
 #### ANOVA
 * The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one level of education is different in average claim amount.
+![Education TukeyHSD](./Visuals/tukey_education.png)
+* A TukeyHSD test revealed that there is a significant difference between all education pairs, except for college-bachelor (p = 0.984) and master-doctor (p = 0.968). Higher levels of education seem to have a significantly lower mean than lower levels of education. 
 
 ### Employment Status
 #### Basic Analysis
@@ -63,6 +66,8 @@ I aim to study which variables impact the size of an auto insurance claim size.
 
 #### ANOVA
 * The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one employment status is different in average claim amount.
+![Employment TukeyHSD](./Visuals/tukey_job.png)
+* A TukeyHSD test revealed that the pairs that are not significantly different are medical leave-disabled (p = ~1.000), retired-disabled (p = 0.952), and retired-medical leave (p = 0.910). Interestingly, these three categories (medical leave, retired, and disabled) can  be described as individuals outside of the active workforce.
 
 ### Income
 #### Basic Analysis
@@ -85,6 +90,8 @@ I aim to study which variables impact the size of an auto insurance claim size.
 
 #### ANOVA
 * The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one marital status is different in average claim amount.
+![Marriage TukeyHSD](./Visuals/tukey_marry.png)
+* A TukeyHSD test revealed that the only pair that was not significantly different was married-divorced (p = 0.062). This suggests that the “single” group is significantly different from both married and divorced individuals in regard to auto insurance average claim size.
 ---
 ## Vehicle Characteristics Analysis
 ### Vehicle Class
@@ -100,6 +107,8 @@ I aim to study which variables impact the size of an auto insurance claim size.
 
 #### ANOVA
 * The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one vehicle class is different in average claim amount.
+![Class TukeyHSD](./Visuals/tukey_class.png)
+* A TukeyHSD test reveals that the only pairs that do not display a significant difference are two-door car-four door car (p = 1.000), luxury SUV-luxury car (p = 0.689), and SUV-Sports-car (p = 0.939). Each of these pairs would be expected to have similar prices and risk profiles, which could be an explanation for their lack of significant differences.  
 
 ### Vehicle Size 
 #### Basic Analysis
@@ -111,6 +120,8 @@ I aim to study which variables impact the size of an auto insurance claim size.
 
 #### ANOVA
 * The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one vehicle size is different in average claim amount.
+![Size TukeyHSD](./Visuals/tukey_size.png)
+* A TukeyHSD test revealed that the only pair that did not display a significant difference in mean is Medsize-Large (p = 0.823). This is explained by the similarities between medium-sized vehicles and large vehicles that are not shared with small vehicles (e.g. parts pricing, safety levels, etc.).
 ---
 ## Location Characteristics Analysis
 ### State
@@ -123,6 +134,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 
 #### ANOVA
 * The ANOVA test was not statistically significant (p = 0.669), providing insufficient evidence that at least one group mean differs. For this variable, that means that there is no significant difference in average claim amount between states.
+	* This makes sense given that each state will have roughly similar makeup of cars and drivers. The law of large numbers will average out the claim sizes.
 
 ### Location Code
 ![Location Code boxplot](./Visuals/location_code_claim_boxplot.png)
@@ -135,4 +147,7 @@ I aim to study which variables impact the size of an auto insurance claim size.
 
 #### ANOVA
 * The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one location code is different in average claim amount.
+![Location TukeyHSD](./Visuals/tukey_location.png)
+* A TukeyHSD test reveals that all of the pairs have a significant difference. This can be explained by the difference in driving conditions and demographics that will be present in the different locations.
+
 
