@@ -20,11 +20,12 @@ I aim to study which variables impact the size of an auto insurance claim size.
 * ** Dropped Variables: ** ‘Customer’, ‘Coverage’, ‘Customer Lifetime Value’, ‘Effective to Date’, ‘Monthly Premium Auto’, ‘Months Since Last Claim’, ‘Months Since Policy Inception’, ‘Number of Open Complaints’, ‘Number of Policies’, ‘Renew Offer Type’, ‘Sales Channel’, ‘Policy Type’, ‘Policy’, ‘Response’
 * **Justification:** These variables do not provide information relevant to this project. Operational and administrative variables are excluded from the scope of this project.
 ## Overall Claim Distribution
-![Claim Distribution Histogram](./Visuals/claim_distribution_box.png)
-![Claim Distribution Box Graph](./Visuals/claim_distribution_histogram.png)
+![Claim Distribution Box Graph](./Visuals/claim_distribution_box.png)
+![Claim Distribution Histogram](./Visuals/claim_distribution_histogram.png)
 * The claim amounts demonstrate a strong right-skew. The majority of claims are between ~$200 and ~$600. There are outliers as high as $2893.   
 	* The average claim size is $434. The median claim size is $384.
 * The large difference between the density curve and the normal curve suggest that the data set is not well approximated by a normal distribution.
+* Although the Total Claim Amount is strongly right-skewed, ANOVA will be robust to the non-normality because of the large sample size.  
 ---
 ## Individual Characteristics Analysis
 ### Gender 
@@ -148,6 +149,6 @@ I aim to study which variables impact the size of an auto insurance claim size.
 #### ANOVA
 * The ANOVA test was statistically significant (p = 2e-16), providing significant evidence that at least one group mean differs. For this variable, that means that at least one location code is different in average claim amount.
 ![Location TukeyHSD](./Visuals/tukey_location.png)
-* A TukeyHSD test reveals that all of the pairs have a significant difference. This can be explained by the difference in driving conditions and demographics that will be present in the different locations.
+* A TukeyHSD test reveals that all of the pairs have a significant difference. Given the difference in driving conditions and demographics that will be present in the different locations.
 
 
