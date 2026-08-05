@@ -98,6 +98,10 @@ modeleducation <- aov(`Total Claim Amount` ~ Education, data = insurance)
 
 summary(modeleducation)
 
+tukey_education <- TukeyHSD(modeleducation)
+par(mar = c(5, 20, 4, 2))
+plot(tukey_education, las = 1)
+
 # Employment Analysis
 tapply(insurance$'Total Claim Amount', insurance$EmploymentStatus, mean)
 tapply(insurance$'Total Claim Amount', insurance$EmploymentStatus, median)
@@ -119,6 +123,11 @@ ggplot(insurance,
 modeljob <- aov(`Total Claim Amount` ~ EmploymentStatus, data = insurance)
 
 summary(modeljob)
+
+tukey_job <- TukeyHSD(modeljob)
+tukey_job
+par(mar = c(5, 20, 4, 2))
+plot(tukey_job, las = 1)
 
 # Income
 ggplot(insurance, aes(x = Income, y = `Total Claim Amount`)) +
@@ -152,6 +161,15 @@ modelmarry <- aov(`Total Claim Amount` ~ `Marital Status`, data = insurance)
 
 summary(modelmarry)
 
+# Note: AI was used for this code because there was an error I did not know how to resolve.
+names(insurance)[names(insurance) == "Marital Status"]    <- "Marital_Status"
+
+modelmarry <- aov(`Total Claim Amount` ~ Marital_Status, data = insurance)
+tukey_marry <- TukeyHSD(modelmarry)
+tukey_marry
+par(mar = c(5, 20, 4, 2))
+plot(tukey_marry, las = 1)
+
 # Vehicle
 ## Vehicle class
 tapply(insurance$'Total Claim Amount', insurance$`Vehicle Class`, mean)
@@ -175,6 +193,15 @@ modelclass <- aov(`Total Claim Amount` ~ `Vehicle Class`, data = insurance)
 
 summary(modelclass)
 
+
+names(insurance)[names(insurance) == "Vehicle Class"]    <- "Vehicle_Class"
+
+modelclass <- aov(`Total Claim Amount` ~ Vehicle_Class, data = insurance)
+tukey_class <- TukeyHSD(modelclass)
+tukey_class
+par(mar = c(5, 20, 4, 2))
+plot(tukey_class, las = 1)
+
 ## Vehicle Size
 
 tapply(insurance$'Total Claim Amount', insurance$`Vehicle Size`, mean)
@@ -197,6 +224,14 @@ ggplot(insurance,
 modelsize <- aov(`Total Claim Amount` ~ `Vehicle Size`, data = insurance)
 
 summary(modelsize)
+
+names(insurance)[names(insurance) == "Vehicle Size"]    <- "Vehicle_Size"
+
+modelsize <- aov(`Total Claim Amount` ~ Vehicle_Size, data = insurance)
+tukey_size <- TukeyHSD(modelsize)
+tukey_size
+par(mar = c(5, 20, 4, 2))
+plot(tukey_size, las = 1)
 
 # Location characteristics
 ## State
@@ -238,3 +273,11 @@ ggplot(insurance,
 modellocation <- aov(`Total Claim Amount` ~ `Location Code`, data = insurance)
 
 summary(modellocation)
+
+names(insurance)[names(insurance) == "Location Code"]    <- "Location_Code"
+
+modellocation <- aov(`Total Claim Amount` ~ Location_Code, data = insurance)
+tukey_location <- TukeyHSD(modellocation)
+tukey_location
+par(mar = c(5, 20, 4, 2))
+plot(tukey_location, las = 1)
